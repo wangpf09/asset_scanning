@@ -4,6 +4,7 @@ use log::debug;
 
 use banner::Banner;
 use command::Opts;
+use resource_sniffing::icmp;
 
 mod banner;
 mod command;
@@ -15,4 +16,6 @@ fn main() {
 
     let opts = Opts::read();
     debug!("opts address {:?}", opts.address);
+
+    icmp::parse_cidr(opts.address)
 }

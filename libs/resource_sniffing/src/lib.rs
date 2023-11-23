@@ -10,6 +10,10 @@ mod tests {
     fn test_parse_cidr() {
         env::set_var("RUST_LOG", "debug");
         env_logger::init();
-        icmp::parse_cidr(String::from("192.168.0.1/24"))
+        let cidrs = vec![
+            String::from("192.168.0.1/24"),
+            String::from("127.0.0.1-127.0.0.15")
+        ];
+        icmp::parse_cidr(cidrs)
     }
 }
