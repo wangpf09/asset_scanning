@@ -17,5 +17,5 @@ fn main() {
     let opts = Opts::read();
     debug!("opts address {:?}", opts.address);
 
-    icmp::parse_cidr(opts.address)
+    let _ = icmp::parse_cidr_ipv4(opts.address);
 }

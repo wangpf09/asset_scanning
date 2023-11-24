@@ -15,8 +15,9 @@ mod tests {
         let cidrs = vec![
             String::from("192.168.0.1/24"),
             String::from("127.0.0.1-127.0.0.15"),
+            String::from("127.0.0.1"),
         ];
-        let ips = icmp::parse_cidr(cidrs);
+        let ips = icmp::parse_cidr_ipv4(cidrs);
         for ip in ips {
             debug!("ip {}", ip)
         }
