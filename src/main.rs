@@ -18,4 +18,6 @@ fn main() {
     debug!("opts address {:?}", opts.address);
 
     let _ = icmp::parse_cidr_ipv4(opts.address);
+
+    icmp::check_alive_ipv4()
 }
