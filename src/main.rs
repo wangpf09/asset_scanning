@@ -1,6 +1,6 @@
 use std::env;
 
-use log::debug;
+use log::{debug, info};
 
 use banner::Banner;
 use command::Opts;
@@ -16,8 +16,9 @@ fn main() {
 
     let opts = Opts::read();
     debug!("opts address {:?}", opts.address);
-
-    let _ = icmp::parse_cidr_ipv4(opts.address);
-
-    icmp::check_alive_ipv4()
+    let ips = icmp::reachable_ips(opts.address, 5);
+    info!("可达ip共有: {}", ips.len());
+    for x in ips {
+        debug!("{}", x)
+    }
 }

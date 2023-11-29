@@ -4,7 +4,7 @@ pub mod icmp;
 mod tests {
     use std::env;
 
-    use log::debug;
+    use log::{debug, warn};
 
     use super::*;
 
@@ -25,6 +25,10 @@ mod tests {
     fn test_check_alive_ipv4() {
         env::set_var("RUST_LOG", "debug");
         env_logger::init();
-        icmp::check_alive_ipv4()
+        if icmp::check_ip_reachable(&"127.0.0.1".to_string()) {
+            debug!("ip reach");
+            return;
+        }
+        warn!("ip un reach")
     }
 }
