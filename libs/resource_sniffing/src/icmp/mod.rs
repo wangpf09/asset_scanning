@@ -22,7 +22,7 @@ pub fn parse_cidr_ipv4(cidrs: Vec<String>) -> Vec<String> {
         }
     }
     info!("ip地址全部解析完成，可用ip共 {}", ips.len());
-    return ips;
+    ips
 }
 
 fn check_ip_reachable(ip: String) -> bool {
